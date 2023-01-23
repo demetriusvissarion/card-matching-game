@@ -54,6 +54,12 @@ export const Card = ({ id, contents }) => {
     click = () => resetUnmatchedCards(id);
   }
 
+  // 4rd if statement
+  // change text to red when two visible cards are not matching
+  if (visibleIDs.length === 2 && !matchedIDs.includes(id)) {
+    cardStyle = "no-match";
+  }
+
   return (
     <button onClick={click} className={`card ${cardStyle}`}>
       {cardText}
