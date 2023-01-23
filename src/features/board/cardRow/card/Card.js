@@ -5,6 +5,7 @@ import {
   selectVisibleIDs,
   flipCard,
   selectMatchedIDs,
+  resetCards,
 } from "../../boardSlice.js";
 
 let cardLogo =
@@ -20,6 +21,11 @@ export const Card = ({ id, contents }) => {
   const flipHandler = (id) => {
     // Add action dispatch below
     dispatch(flipCard(id));
+  };
+
+  // reset the unmatched cards by clicking any card
+  const resetUnmatchedCards = (id) => {
+    dispatch(resetCards(id));
   };
 
   let cardStyle = "resting";
@@ -45,7 +51,7 @@ export const Card = ({ id, contents }) => {
   // 3rd if statement
   // implement number of flipped cards check
   if (visibleIDs.length === 2) {
-    click = () => {};
+    click = () => resetUnmatchedCards(id);
   }
 
   return (
